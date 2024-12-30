@@ -62,8 +62,11 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  if (queen.x === king.x) return true;
+  if (queen.y === king.y) return true;
+  if (Math.abs(queen.x - king.x) === Math.abs(queen.y - king.y)) return true;
+  return false;
 }
 
 /**
@@ -132,10 +135,68 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
-}
+function convertNumberToString(numberStr) {
+  let newStr = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      case '1':
+        newStr += 'one ';
+        break;
+      case '2':
+        newStr += 'two ';
+        break;
 
+      case '3':
+        newStr += 'three ';
+        break;
+
+      case '4':
+        newStr += 'four ';
+        break;
+
+      case '5':
+        newStr += 'five ';
+        break;
+
+      case '6':
+        newStr += 'six ';
+        break;
+
+      case '7':
+        newStr += 'seven ';
+        break;
+
+      case '8':
+        newStr += 'eight ';
+        break;
+
+      case '9':
+        newStr += 'nine ';
+        break;
+
+      case '-':
+        newStr += 'minus ';
+        break;
+
+      case '.':
+      case ',':
+        newStr += 'point ';
+        break;
+
+      case '0':
+        newStr += 'zero ';
+        break;
+
+      default:
+        break;
+    }
+  }
+  let newStr2 = '';
+  for (let j = 0; j < newStr.length - 1; j += 1) {
+    newStr2 += newStr[j];
+  }
+  return newStr2;
+}
 /**
  * Determines whether a string is a palindrome.
  * In this task, the use of methods of the String and Array classes is not allowed.
@@ -192,8 +253,14 @@ function getIndexOf(str, letter) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  let number = num;
+
+  while (number >= 1) {
+    if (number % 10 === digit) return true;
+    number = Math.floor(number / 10);
+  }
+  return false;
 }
 
 /**
@@ -209,8 +276,21 @@ function isContainNumber(/* num, digit */) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(/* arr */) {
-  throw new Error('Not implemented');
+function getBalanceIndex(arr) {
+  let arrSum = 0;
+  let leftSum = 0;
+
+  for (let i = 0; i < arr.length; i += 1) {
+    arrSum += arr[i];
+  }
+
+  for (let j = 0; j < arr.length; j += 1) {
+    const rightSum = arrSum - leftSum - arr[j];
+
+    if (rightSum === leftSum) return j;
+    leftSum += arr[j];
+  }
+  return -1;
 }
 
 /**
@@ -253,10 +333,10 @@ function getSpiralMatrix(/* size */) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
+
 function rotateMatrix(/* matrix */) {
   throw new Error('Not implemented');
 }
-
 /**
  * Sorts an array of numbers in ascending order in place.
  * Employ any sorting algorithm of your choice.
