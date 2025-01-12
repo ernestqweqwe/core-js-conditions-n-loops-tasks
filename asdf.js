@@ -1,17 +1,19 @@
-function getBalanceIndex(arr) {
-  let arrSum = 0;
-  let leftSum = 0;
+/**
+ * Rotates a matrix by 90 degrees clockwise in place.
+ * Take into account that the matrix size can be very large. Consider how you can optimize your solution.
+ * Usage of String and Array class methods is not allowed in this task.
+ *
+ * @param {number[][]} matrix - The matrix to rotate.
+ * @return {number[][]} The rotated matrix.
+ *
+ * @example:
+ *  [                 [
+ *    [1, 2, 3],        [7, 4, 1],
+ *    [4, 5, 6],  =>    [8, 5, 2],
+ *    [7, 8, 9]         [9, 6, 3]
+ *  ]                 ]
+ */
 
-  for (let i = 0; i < arr.length; i += 1) {
-    arrSum += arr[i];
-  }
-
-  for (let j = 0; j < arr.length; j += 1) {
-    const rightSum = arrSum - leftSum - arr[j];
-
-    if (rightSum === leftSum) return j;
-    leftSum += arr[j];
-  }
+function rotateMatrix(/* matrix */) {
+  throw new Error('Not implemented');
 }
-
-console.log(getBalanceIndex([1, 2, 5, 3, 0]));
